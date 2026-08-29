@@ -48,13 +48,10 @@ public:
     int evalRPN(vector<string>& tokens) {
         stack<int> s;
         
-        // Read tokens from left to right
         for (int i = 0; i < tokens.size(); i++) {
             string token = tokens[i];
             
-            // If the token is an operator
             if (token == "+" || token == "-" || token == "*" || token == "/") {
-                // Order matters! The first one popped is the second operand.
                 int val2 = s.top(); 
                 s.pop();
                 int val1 = s.top(); 
@@ -65,9 +62,7 @@ public:
                 else if (token == "*") s.push(val1 * val2);
                 else if (token == "/") s.push(val1 / val2);
             } 
-            // If the token is a number
             else {
-                // std::stoi converts the string to an int, handling negatives perfectly
                 s.push(stoi(token)); 
             }
         }
